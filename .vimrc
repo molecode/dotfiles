@@ -1,13 +1,40 @@
+" UTF-8 als Default-Encoding
+set enc=utf-8
+
+" Load pathogen
+execute pathogen#infect()
+
+" Airline
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.linenr = 'Ξ'
+let g:airline_symbols.whitespace = 'Ξ'
+set ttimeoutlen=10
+
 " Automatische Einrückung (Globale Konfiguration)
 set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 set smarttab
-
-" UTF-8 als Default-Encoding
-set enc=utf-8
+set tabstop=4
+set softtabstop=0 noexpandtab
+set shiftwidth=4
+set shiftround
+set showmatch
+set backspace=indent,eol,start
+set autoindent
+set copyindent
 
 " Ein Tab entspricht vier Leerzeichen (wie in PEP 8 definiert)
 " Dies aber nur für python, damit es nicht mit anderen (ruby, c, Makefiles) kollidiert
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 omnifunc=pythoncomplete#Complete
+
+
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+autocmd filetype html,xml set listchars-=tab:>.
 
 " HTML
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
@@ -21,8 +48,15 @@ autocmd FileType python map <F5> :w<CR>:!python "%"<CR>
 syntax on
 set number
 set nocompatible
+set hidden
+"Display long lines on multiple lines
+"set nowrap
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
 
-" update shortcuts 
+" update shortcuts
 map <F2> :NERDTreeToggle<CR>
 nnoremap <silent> <F3> :!clear;python %<CR>
 nnoremap <silent> <F9> :!pylint %<CR>
@@ -49,3 +83,12 @@ noremap <Right> <NOP>
 
 filetype plugin indent on
 let @i="import ipdb; ipdb.set_trace()"
+
+" vimwiki
+let wiki_1 = {}
+let wiki_1.path = '~/.vimwiki/privat/'
+
+let wiki_2 = {}
+let wiki_2.path = '~/.vimwiki/resmio/'
+
+let g:vimwiki_list = [wiki_1, wiki_2]
