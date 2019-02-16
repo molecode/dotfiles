@@ -17,9 +17,12 @@ order += "disk /"
 order += "run_watch DHCP"
 order += "path_exists VPN"
 order += "wireless _first_"
+order += "ethernet enp0s20f0u1u3"
 order += "ethernet enp0s20f0u2u1"
+order += "ethernet enp0s20f0u2u2"
 order += "ethernet enp0s20f0u2u3i5"
 order += "ethernet enp0s20f0u1"
+order += "ethernet enp0s20f0u2"
 order += "battery 0"
 order += "cpu_usage"
 order += "load"
@@ -47,13 +50,31 @@ ethernet _first_ {
         format_down = "e: down"
 }
 
+ethernet enp0s20f0u1u3 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = ""
+}
+
 ethernet enp0s20f0u1 {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip (%speed)"
         format_down = ""
 }
 
+ethernet enp0s20f0u2 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = ""
+}
+
 ethernet enp0s20f0u2u1 {
+        # if you use %speed, i3status requires root privileges
+        format_up = "E: %ip (%speed)"
+        format_down = ""
+}
+
+ethernet enp0s20f0u2u2 {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip (%speed)"
         format_down = ""
