@@ -103,13 +103,27 @@ alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
 alias t='task'
-alias to='task proj:ob'
 alias ti='timew'
 alias xc='xclip -sel clip <'
 alias vi=vim
 alias dm='python manage.py'
+alias work=~/.screenlayout/work.sh
+alias laptop=~/.screenlayout/laptop_only.sh
+alias home=~/.screenlayout/home.sh
+alias home2=~/.screenlayout/home2.sh
 alias r=ranger
-alias ob="ssh -F $HOME/.ssh/orderbird/config"
+alias cal='cal -m'
+
+# pincamp alias
+alias pm='docker-compose exec website pipenv run python manage.py'
+alias p='docker-compose exec website'
+
+# reminder function
+reminder() {
+	cmd="notify-send -u critical 'REMINDER' '${2}'"
+	echo "$cmd | at now +${1}min"
+	echo $cmd | at now +${1}min
+}
 
 # autojump
 . /etc/profile.d/autojump.sh
@@ -121,6 +135,12 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
+# autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# syntax-highliting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # ssh-agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     ssh-agent > ~/.ssh-agent-thing
@@ -130,3 +150,5 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
 fi
 
 eval `dircolors $HOME/.dir_colors/dircolors.256dark`
+
+export PATH="$HOME/.cargo/bin:$PATH"
