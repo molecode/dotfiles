@@ -10,8 +10,8 @@ URxvt*geometry:                115x40
 !URxvt*boldFont: xft:Roboto Mono:bold:pixelsize=17:antialias=false:hinting=true
 !URxvt*font: xft:Roboto Mono:pixelsize=14:hinting=true
 !URxvt*boldFont: xft:Roboto Mono:bold:pixelsize=17:hinting=true
-URxvt*font: xft:Roboto Mono for Powerline:pixelsize=14:hinting=true
-URxvt*boldFont: xft:Roboto Mono for Powerline:bold:pixelsize=17:hinting=true
+URxvt*font: xft:Roboto Mono for Powerline:pixelsize=19:hinting=true
+URxvt*boldFont: xft:Roboto Mono for Powerline:bold:pixelsize=22:hinting=true
 
 URxvt*depth:                24
 URxvt*borderless: 1
