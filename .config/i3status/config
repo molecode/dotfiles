@@ -16,6 +16,8 @@ order += "volume master"
 order += "disk /"
 order += "run_watch DHCP"
 order += "path_exists VPN"
+order += "path_exists WG0"
+order += "path_exists WG1"
 order += "wireless _first_"
 order += "ethernet enp0s20f0u1u3"
 order += "ethernet enp0s20f0u2u1"
@@ -95,8 +97,21 @@ run_watch VPN {
 }
 
 path_exists VPN {
-	path = "/proc/sys/net/ipv4/conf/tun0"
-	format_down = ""
+        path = "/proc/sys/net/ipv4/conf/tun0"
+        format = "VPN: openVPN"
+        format_down = ""
+}
+
+path_exists WG0 {
+        path = "/proc/sys/net/ipv4/conf/wg0"
+        format = "VPN: ural"
+        format_down = ""
+}
+
+path_exists WG1 {
+        path = "/proc/sys/net/ipv4/conf/wg1"
+        format = "VPN: home"
+        format_down = ""
 }
 
 tztime local {

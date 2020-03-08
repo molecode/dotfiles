@@ -30,13 +30,18 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # Screenshot
 bindsym Print exec teiler
+
+# scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # rofi
 bindsym $mod+c exec "rofi -show ssh -modi ssh,window"
@@ -190,7 +195,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock screen
-bindsym Control+Mod1+l exec i3lock -f
+bindsym Control+Mod1+l exec i3lock -f -c 000000
 
 # Volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
