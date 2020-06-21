@@ -113,10 +113,7 @@ alias home=~/.screenlayout/home.sh
 alias home2=~/.screenlayout/home2.sh
 alias r=ranger
 alias cal='cal -m'
-
-# pincamp alias
-alias pm='docker-compose exec website pipenv run python manage.py'
-alias p='docker-compose exec website'
+alias dc=docker-compose
 
 # reminder function
 reminder() {
@@ -152,3 +149,11 @@ fi
 eval `dircolors $HOME/.dir_colors/dircolors.256dark`
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
