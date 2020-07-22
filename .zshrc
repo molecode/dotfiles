@@ -51,7 +51,7 @@ ZSH_THEME="arrow"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow pip web-search docker docker-compose taskwarrior tmux vagrant)
+plugins=(git git-flow pip web-search docker docker-compose taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -128,10 +128,6 @@ reminder() {
 # Fontsettings for pycharm
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
-
 # autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -146,7 +142,7 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)"
 fi
 
-eval `dircolors $HOME/.dir_colors/dircolors.256dark`
+eval `dircolors $HOME/.config/dir_colors/dircolors.256dark`
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -154,6 +150,6 @@ eval "$(pyenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+if [[ $(tty) = /dev/tty1 ]] && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
