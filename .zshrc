@@ -7,7 +7,7 @@ export ZSH=/home/mole/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="arrow"
+#ZSH_THEME="arrow"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -84,13 +84,28 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# color aliases
+alias ls='ls --color=auto'
+alias diff='diff --color=auto'
+alias grep='rg --color=auto'
+alias rg='rg --color=auto'
+alias ip='ip -color=auto'
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
 # own aliases
 alias l='ls -l'
 alias ll='ls -lA'
 alias L='ls -l | less'
 alias LL='ls -la | less'
-alias lg='ls -l | grep'
-alias llg='ls -la | grep'
+alias lg='ls -l | rg'
+alias llg='ls -la | rg'
 alias mv='mv -i'
 alias cp='cp -i'
 alias rm='rm -I'
@@ -142,13 +157,18 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     eval "$(<~/.ssh-agent-thing)"
 fi
 
-eval `dircolors $HOME/.config/dir_colors/dircolors.256dark`
+#eval `dircolors $HOME/.config/dir_colors/dircolors.256dark`
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
 eval "$(pyenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
+# enable starship
+eval "$(starship init zsh)"
+
+source /etc/grc.zsh
 
 if [[ $(tty) = /dev/tty1 ]] && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
