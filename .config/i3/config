@@ -224,6 +224,7 @@ exec /usr/bin/signal-desktop
 exec /usr/bin/spotify
 for_window [class="firefox"] move to workspace 2
 for_window [class="jetbrains-pycharm-ce"] move to workspace 3
+for_window [workspace=3] layout tabbed
 for_window [class="Slack"] move to workspace 10
 for_window [class="Thunderbird"] move to workspace 10
 for_window [class="Signal"] move to workspace 10
